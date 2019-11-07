@@ -38,17 +38,26 @@
             <br/>
             <br/>
             <p:panel header="table test">
-                <p:dataTable value="#{indexView.tableItemDtoList}" var="item" scrollable="true" scrollHeight="300">
-                    <p:column headerText="word0">
+                <p:dataTable value="#{indexView.tableItemDtoList}" lazy="true"
+                             paginator="true"
+                             rows="10"
+                             scrollable="true"
+                             var="item"
+                >
+
+                    <p:ajax event="page" global="false"/>
+                    <p:ajax event="sort" global="false"/>
+
+                    <p:column headerText="word0" sortBy="#{item.word0}">
                         <h:outputText value="#{item.word0}"/>
                     </p:column>
-                    <p:column headerText="word1">
+                    <p:column headerText="word1" sortBy="#{item.word1}">
                         <h:outputText value="#{item.word1}"/>
                     </p:column>
-                    <p:column headerText="number1">
+                    <p:column headerText="number1" sortBy="#{item.number1}">
                         <h:outputText value="#{item.number1}"/>
                     </p:column>
-                    <p:column headerText="number2">
+                    <p:column headerText="number2" sortBy="#{item.number2}">
                         <h:outputText value="#{item.number2}"/>
                     </p:column>
                 </p:dataTable>
